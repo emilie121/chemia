@@ -47,7 +47,7 @@ body.light {
   -webkit-justify-content: flex-end;
   justify-content: flex-end;
   gap: 8px;
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto 32px;
 }
 
@@ -95,16 +95,15 @@ header p {
   -webkit-flex-wrap: wrap;
   flex-wrap: wrap;
   gap: 24px;
-  max-width: 800px;
+  max-width: 1200px;
   margin: 0 auto;
   -webkit-justify-content: center;
   justify-content: center;
 }
 
 .card-container {
-  width: calc(50% - 12px);
-  min-width: 280px;
-  aspect-ratio: 1 / 1.1;
+  width: calc(33.333% - 16px);
+  min-height: 340px;
   perspective: 900px;
   cursor: pointer;
 }
@@ -220,6 +219,40 @@ header p {
   font-weight: 600;
 }
 
+.mini-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin: 8px 0;
+}
+
+.mini-table th {
+  text-align: left;
+  color: var(--accent);
+  font-weight: 600;
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.mini-table td {
+  padding: 4px 8px;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.mini-table tr:last-child td {
+  border-bottom: none;
+}
+
+.big-formula {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent);
+  text-align: center;
+  padding: 12px 0;
+  letter-spacing: 0.02em;
+}
+
 .hint {
   font-size: 12px;
   color: var(--text-secondary);
@@ -238,9 +271,13 @@ header p {
   transition: color 0.3s;
 }
 
+@media (max-width: 960px) {
+  .card-container { width: calc(50% - 12px); }
+}
+
 @media (max-width: 620px) {
   body { padding: 32px 16px; }
-  .card-container { width: 100%; aspect-ratio: auto; min-height: 320px; }
+  .card-container { width: 100%; min-height: 320px; }
   header h1 { font-size: 24px; }
   .card-emoji { font-size: 40px; }
   .card-name { font-size: 20px; }
@@ -296,6 +333,62 @@ var cards = [
     formula: "C₁₂H₂₂O₁₁",
     type: "disacharyd (glukoza + galaktoza)",
     back: "Występuje w <strong>mleku ssaków</strong>. Do jej strawienia potrzebny jest enzym <strong>laktaza</strong> — jego brak powoduje nietolerancję laktozy.<br><br>Zastosowania: żywność dla niemowląt, a także składnik <strong>mieszanek dymotwórczych</strong> i świec dymnych."
+  },
+  {
+    name: "GALAKTOZA",
+    subtitle: "",
+    emoji: "🧪",
+    formula: "C₆H₁₂O₆",
+    type: "cukier prosty (monosacharyd)",
+    back: "Składnik <strong>laktozy</strong> (cukru mlecznego). Razem z glukozą tworzy laktozę.<br><br>Ważna rola w budowie <strong>glikolipidów</strong> i <strong>glikoprotein</strong> — cząsteczek niezbędnych do prawidłowego funkcjonowania komórek."
+  },
+  {
+    name: "Rodzina monosacharydów",
+    subtitle: "INNE MONOSACHARYDY",
+    emoji: "🔬",
+    formula: "",
+    type: "cukry proste o 3–8 atomach węgla",
+    back: '<table class="mini-table"><tr><th>Nazwa</th><th>Wzór</th><th>Atomy C</th></tr><tr><td>Trioza</td><td>C₃H₆O₃</td><td>3</td></tr><tr><td>Tetroza</td><td>C₄H₈O₄</td><td>4</td></tr><tr><td>Pentoza</td><td>C₅H₁₀O₅</td><td>5</td></tr></table>Monosacharydy to <strong>białe substancje krystaliczne</strong>, rozpuszczalne w wodzie, o słodkim smaku.<br><br>Stosowane w przemyśle <strong>włókienniczym, szklarskim</strong> i <strong>spożywczym</strong>.'
+  },
+  {
+    name: "SKROBIA",
+    subtitle: "",
+    emoji: "🥔",
+    formula: "",
+    type: "polisacharyd (zapasowy u roślin)",
+    back: "Forma <strong>magazynowania energii u roślin</strong>. Zbudowana z wielu cząsteczek glukozy.<br><br>Występuje w <strong>ziemniakach, ryżu, zbożach</strong>.<br><br>Organizm rozkłada ją do glukozy podczas trawienia."
+  },
+  {
+    name: "GLIKOGEN",
+    subtitle: "",
+    emoji: "💪",
+    formula: "",
+    type: "polisacharyd (zapasowy u zwierząt)",
+    back: "Forma <strong>magazynowania energii u zwierząt i ludzi</strong>. Zbudowany z wielu cząsteczek glukozy.<br><br>Magazynowany głównie w <strong>wątrobie i mięśniach</strong>.<br><br>Gdy organizm potrzebuje energii, rozkłada glikogen z powrotem do glukozy."
+  },
+  {
+    name: "CELULOZA",
+    subtitle: "",
+    emoji: "🌿",
+    formula: "",
+    type: "polisacharyd (budulcowy)",
+    back: "Buduje <strong>ściany komórkowe roślin</strong>, nadaje im sztywność.<br><br>Zbudowana z glukozy, ale połączonej inaczej niż w skrobi — dlatego <strong>ludzie nie potrafią jej strawić</strong>.<br><br>Najczęściej występujący związek organiczny na Ziemi."
+  },
+  {
+    name: "Wiązanie O-glikozydowe",
+    subtitle: "",
+    emoji: "⚡",
+    formula: "",
+    type: "mechanizm łączenia cukrów",
+    back: '<svg viewBox="0 0 320 130" width="100%" style="max-width:320px;margin:0 auto;display:block"><polygon points="40,35 65,20 90,35 90,60 65,75 40,60" fill="none" stroke="#00d4ff" stroke-width="2"/><polygon points="230,35 255,20 280,35 280,60 255,75 230,60" fill="none" stroke="#00d4ff" stroke-width="2"/><circle cx="160" cy="48" r="16" fill="none" stroke="#ff3d57" stroke-width="2"/><text x="160" y="53" text-anchor="middle" fill="#ff3d57" font-size="15" font-weight="700" font-family="sans-serif">O</text><line x1="90" y1="48" x2="144" y2="48" stroke="#8888a0" stroke-width="2"/><line x1="176" y1="48" x2="230" y2="48" stroke="#8888a0" stroke-width="2"/><text x="65" y="100" text-anchor="middle" fill="#8888a0" font-size="11" font-family="sans-serif">monosacharyd 1</text><text x="255" y="100" text-anchor="middle" fill="#8888a0" font-size="11" font-family="sans-serif">monosacharyd 2</text><text x="160" y="122" text-anchor="middle" fill="#ff3d57" font-size="11" font-family="sans-serif">atom tlenu (O)</text></svg><div style="margin-top:12px">Litera <strong>O</strong> w nazwie oznacza, że dwie reszty monosacharydowe są połączone za pomocą <strong>atomu tlenu</strong>. Tak powstają disacharydy.</div>'
+  },
+  {
+    name: "Wzór ogólny sacharydów",
+    subtitle: "",
+    emoji: "📐",
+    formula: "",
+    type: "Cₙ(H₂O)ₘ",
+    back: '<div class="big-formula">Cₙ(H₂O)ₘ</div>Sacharydy = grupa związków organicznych z atomów <strong>węgla (C)</strong>, <strong>wodoru (H)</strong> i <strong>tlenu (O)</strong>.<br><br>Wzór Cₙ(H₂O)ₘ wygląda jakby węgiel był „uwodniony" — stąd stara nazwa <strong>„węglowodany"</strong>.<br><br>Zawierają grupy:<br>• hydroksylową <strong>–OH</strong><br>• aldehydową <strong>–CHO</strong><br>• karbonylową <strong>C=O</strong>'
   }
 ];
 
@@ -304,13 +397,15 @@ function renderCards() {
   var html = "";
   for (var i = 0; i < cards.length; i++) {
     var c = cards[i];
+    var formulaHtml = c.formula ? '<div class="card-formula">' + c.formula + '</div>' : '';
+    var subtitleHtml = c.subtitle ? '<div class="card-subtitle">' + c.subtitle + '</div>' : '';
     html += '<div class="card-container" onclick="this.classList.toggle(\'flipped\')">' +
       '<div class="card-inner">' +
         '<div class="card-front">' +
           '<div class="card-emoji">' + c.emoji + '</div>' +
           '<div class="card-name">' + c.name + '</div>' +
-          '<div class="card-subtitle">' + c.subtitle + '</div>' +
-          '<div class="card-formula">' + c.formula + '</div>' +
+          subtitleHtml +
+          formulaHtml +
           '<div class="card-type">' + c.type + '</div>' +
           '<span class="flip-hint">kliknij →</span>' +
         '</div>' +
