@@ -135,7 +135,8 @@ header p {
   -webkit-flex-direction: column;
   flex-direction: column;
   transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
-  overflow: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .card-front {
@@ -425,6 +426,26 @@ document.getElementById("themeToggle").addEventListener("click", function() {
 });
 
 renderCards();
+
+function adjustCardHeights() {
+  var containers = document.querySelectorAll(".card-container");
+  for (var i = 0; i < containers.length; i++) {
+    var front = containers[i].querySelector(".card-front");
+    var back = containers[i].querySelector(".card-back");
+    front.style.position = "relative";
+    back.style.position = "relative";
+    back.style.transform = "none";
+    var frontH = front.scrollHeight;
+    var backH = back.scrollHeight;
+    var maxH = Math.max(frontH, backH) + 2;
+    front.style.position = "";
+    back.style.position = "";
+    back.style.transform = "";
+    containers[i].style.height = maxH + "px";
+  }
+}
+adjustCardHeights();
+window.addEventListener("resize", adjustCardHeights);
 </script>
 </body>
 </html>
